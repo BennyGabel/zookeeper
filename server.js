@@ -41,6 +41,14 @@ function filterByQuery(query, animalsArray) {
     if (query.name) {
       filteredResults = filteredResults.filter(animal => animal.name === query.name);
     }
+    
+    // alert("name",query.name)
+    // console.log("name",query.name)
+    // console.log(filteredResults.filter)
+    
+    console.log(query,query.diet, query.species, query.name)     // { species: 'gorilla', name: 'Terry' } undefined gorilla Terry
+
+
     return filteredResults;
   }
   
