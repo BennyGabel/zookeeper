@@ -13,16 +13,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 /***************** IMPORTANT ******************/
 
+app.use(express.static('public'));   // [BG] Add the web browser address as main (current) directory.... Provides a file path to a location in our application 
+                                     // [BG] express.static is middleware
+                                     // [BG] This code sets the public sub-directory as root path
+
 const PORT = process.env.PORT || 3001;
 
-// app.get('/api/animals', (req, res) => {
-//   res.send('Hello!');
-// })
-
-//app.listen(3001, () => {console.log('API servr now on port 3001!')});
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}`);
 })
+
+/* 22.10.26 */
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
+}); 
+/* 22.10.26 */
+
+
 
 function filterByQuery(query, animalsArray) {
   let personalityTraitsArray = []
