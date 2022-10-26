@@ -1,8 +1,20 @@
 const express = require('express');
+// const { animals } = require('./data/animals')
 
 const app = express()
 
+   /***************** IMPORTANT ******************/
+// parse incoming string or array data
+app.use(express.urlencoded({ extended: true }));
+// parse incoming JSON data
+app.use(express.json());
+/***************** IMPORTANT ******************/
+
 const PORT = process.env.PORT || 3001;
+
+// app.get('/api/animals', (req, res) => {
+//   res.send('Hello!');
+// })
 
 //app.listen(3001, () => {console.log('API servr now on port 3001!')});
 app.listen(PORT, () => {
@@ -79,6 +91,11 @@ app.get('/api/animals', (req, res) => {
     res.json(results);
 });
   
+app.post('/api/animals', (req, res) => {
+  // req.body is where our incoming content will be
+  console.log(req.body)
+  res.json(req.body)
+});
 
 const{ animals } = require('./data/animals');
 
